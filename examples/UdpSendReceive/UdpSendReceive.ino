@@ -1,6 +1,6 @@
 /****************************************************************************************************************************
   UDPSendReceive.ino - Simple Arduino web server sample for ESP8266/ESP32 AT-command shield
-
+  
   For Ethernet shields using ESP32_ENC (ESP32 + ENC28J60)
 
   WebServer_ESP32_ENC is a library for the ESP32 with Ethernet ENC28J60 to run WebServer
@@ -76,7 +76,7 @@ char timeServer[]         = "time.nist.gov";  // NTP server
 unsigned int localPort    = 2390;             // local port to listen for UDP packets
 
 const int NTP_PACKET_SIZE = 48;       // NTP timestamp is in the first 48 bytes of the message
-const int UDP_TIMEOUT     = 2000;     // timeout in miliseconds to wait for an UDP packet to arrive
+const int UDP_TIMEOUT     = 2000;     // timeout in milliseconds to wait for an UDP packet to arrive
 
 byte packetBuffer[NTP_PACKET_SIZE];          // buffer to hold incoming packet
 byte ReplyBuffer[] = "ACK";      // a string to send back
@@ -114,7 +114,6 @@ void sendNTPpacket(char *ntpSrv)
 void setup()
 {
   Serial.begin(115200);
-
   while (!Serial && (millis() < 5000));
 
   Serial.print(F("\nStart UDPSendReceive on "));
@@ -166,7 +165,7 @@ void loop()
 {
   sendNTPpacket(timeServer); // send an NTP packet to a time server
 
-  // wait for a reply for UDP_TIMEOUT miliseconds
+  // wait for a reply for UDP_TIMEOUT milliseconds
   unsigned long startMs = millis();
 
   while (!Udp.available() && (millis() - startMs) < UDP_TIMEOUT) {}

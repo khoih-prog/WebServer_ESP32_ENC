@@ -119,8 +119,8 @@ const char my_key[]   = "FIXME";
   const char* MQTT_SERVER = "broker.emqx.io";        // Broker address
 
   const char*  ID         = "MQTTClient_SSL-Client";  // Name of our device, must be unique
-  String      topic       = "ESP32_Pub";              // Topic to subcribe to
-  String      subTopic    = "ESP32_Sub";              // Topic to subcribe to
+  String      topic       = "ESP32_Pub";              // Topic to subscribe to
+  String      subTopic    = "ESP32_Sub";              // Topic to subscribe to
 
 #endif
 
@@ -182,7 +182,7 @@ void reconnect()
 
       Serial.println("Published connection message successfully!");
 
-      Serial.print("Subcribed to: ");
+      Serial.print("Subscribed to: ");
       Serial.println(subTopic);
 
       // This is a workaround to address https://github.com/OPEnSLab-OSU/SSLClient/issues/9

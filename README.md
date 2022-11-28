@@ -466,7 +466,7 @@ ESP32_Pub
 Attempting MQTT connection to broker.emqx.io
 ...connected
 Published connection message successfully!
-Subcribed to: ESP32_Sub
+Subscribed to: ESP32_Sub
 MQTT Message Send : ESP32_Pub => Hello from MQTT_ThingStream on ESP32_DEV with ESP32_ENC28J60
 MQTT Message receive [ESP32_Pub] Hello from MQTT_ThingStream on ESP32_DEV with ESP32_ENC28J60
 MQTT Message Send : ESP32_Pub => Hello from MQTT_ThingStream on ESP32_DEV with ESP32_ENC28J60

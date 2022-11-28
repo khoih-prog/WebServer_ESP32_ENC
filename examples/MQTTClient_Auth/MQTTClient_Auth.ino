@@ -95,8 +95,8 @@ const char* mqttServer = "broker.emqx.io";        // Broker address
 //const char* mqttServer = "broker.shiftr.io";        // Broker address
 
 const char *ID        = "MQTTClient_SSL-Client";  // Name of our device, must be unique
-const char *TOPIC     = "MQTT_Pub";               // Topic to subcribe to
-const char *subTopic  = "MQTT_Sub";               // Topic to subcribe to
+const char *TOPIC     = "MQTT_Pub";               // Topic to subscribe to
+const char *subTopic  = "MQTT_Sub";               // Topic to subscribe to
 
 //IPAddress mqttServer(172, 16, 0, 2);
 
@@ -136,7 +136,7 @@ void reconnect()
       client.publish(TOPIC, data.c_str());
 
       //Serial.println("Published connection message successfully!");
-      //Serial.print("Subcribed to: ");
+      //Serial.print("Subscribed to: ");
       //Serial.println(subTopic);
 
       // This is a workaround to address https://github.com/OPEnSLab-OSU/SSLClient/issues/9

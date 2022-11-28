@@ -1,6 +1,6 @@
 /****************************************************************************************************************************
   UdpNTPClient.ino - Simple Arduino web server sample for ESP8266 AT-command shield
-
+  
   For Ethernet shields using ESP32_ENC (ESP32 + ENC28J60)
 
   WebServer_ESP32_ENC is a library for the ESP32 with Ethernet ENC28J60 to run WebServer
@@ -81,7 +81,7 @@ char timeServer[]         = "time.nist.gov";  // NTP server
 unsigned int localPort    = 2390;             // local port to listen for UDP packets
 
 const int NTP_PACKET_SIZE = 48;       // NTP timestamp is in the first 48 bytes of the message
-const int UDP_TIMEOUT     = 2000;     // timeout in miliseconds to wait for an UDP packet to arrive
+const int UDP_TIMEOUT     = 2000;     // timeout in milliseconds to wait for an UDP packet to arrive
 
 byte packetBuffer[NTP_PACKET_SIZE];   // buffer to hold incoming and outgoing packets
 
@@ -118,7 +118,6 @@ void sendNTPpacket(char *ntpSrv)
 void setup()
 {
   Serial.begin(115200);
-
   while (!Serial && (millis() < 5000));
 
   Serial.print(F("\nStart UdpNTPClient on "));
@@ -157,7 +156,7 @@ void setup()
   ESP32_ENC_waitForConnect();
 
   ///////////////////////////////////
-
+  
   Udp.begin(localPort);
 }
 
@@ -165,9 +164,8 @@ void loop()
 {
   sendNTPpacket(timeServer); // send an NTP packet to a time server
 
-  // wait for a reply for UDP_TIMEOUT miliseconds
+  // wait for a reply for UDP_TIMEOUT milliseconds
   unsigned long startMs = millis();
-
   while (!Udp.available() && (millis() - startMs) < UDP_TIMEOUT) {}
 
   // if there's data available, read a packet
@@ -195,7 +193,7 @@ void loop()
     // combine the four bytes (two words) into a long integer
     // this is NTP time (seconds since Jan 1 1900):
     unsigned long secsSince1900 = highWord << 16 | lowWord;
-
+    
     Serial.print(F("Seconds since Jan 1 1900 = "));
     Serial.println(secsSince1900);
 
@@ -212,25 +210,25 @@ void loop()
     Serial.print(F("The UTC time is "));       // UTC is the time at Greenwich Meridian (GMT)
     Serial.print((epoch  % 86400L) / 3600); // print the hour (86400 equals secs per day)
     Serial.print(F(":"));
-
-    if (((epoch % 3600) / 60) < 10)
+    
+    if (((epoch % 3600) / 60) < 10) 
     {
       // In the first 10 minutes of each hour, we'll want a leading '0'
       Serial.print(F("0"));
     }
-
+    
     Serial.print((epoch  % 3600) / 60); // print the minute (3600 equals secs per minute)
     Serial.print(F(":"));
-
-    if ((epoch % 60) < 10)
+    
+    if ((epoch % 60) < 10) 
     {
       // In the first 10 seconds of each minute, we'll want a leading '0'
       Serial.print(F("0"));
     }
-
+    
     Serial.println(epoch % 60); // print the second
   }
-
+  
   // wait ten seconds before asking for the time again
   delay(10000);
 }
