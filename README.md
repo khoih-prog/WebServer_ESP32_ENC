@@ -402,7 +402,7 @@ Example:
 #### File [AdvancedWebServer.ino](examples/AdvancedWebServer/AdvancedWebServer.ino)
 
 
-https://github.com/khoih-prog/WebServer_ESP32_ENC/blob/49acabe4762e935fc6c13215109296c909c2de99/examples/AdvancedWebServer/AdvancedWebServer.ino#L41-L210
+https://github.com/khoih-prog/WebServer_ESP32_ENC/blob/041ef525edf63eccb70c78d8f65999664c383866/examples/AdvancedWebServer/AdvancedWebServer.ino#L41-L275
 
 ---
 ---
