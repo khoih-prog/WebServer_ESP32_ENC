@@ -26,7 +26,7 @@
 
 #### Releases v1.5.1
 
-1. Initial coding to support ESP32 boards using ENC28J60 LwIP Ethernet. Sync with [WebServer_ESP32_ENC v1.5.1](https://github.com/khoih-prog/WebServer_ESP32_ENC)
+1. Initial coding to support ESP32 boards using ENC28J60 LwIP Ethernet. Sync with [WebServer_WT32_ETH01 v1.5.1](https://github.com/khoih-prog/WebServer_WT32_ETH01)
 
 
 
