@@ -37,7 +37,7 @@
 
 #include <WebServer_ESP32_ENC.h>
 
-WebServer server(80);
+WiFiServer server(80);
 
 // Enter a MAC address and IP address for your controller below.
 #define NUMBER_OF_MAC      20
