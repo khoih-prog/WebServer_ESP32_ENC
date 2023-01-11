@@ -5,15 +5,16 @@
 
   WebServer_ESP32_ENC is a library for the ESP32 with Ethernet ENC28J60 to run WebServer
 
-  Based on and modified from ESP8266 https://github.com/esp8266/Arduino/releases
+  Based on and modified from ESP32-IDF https://github.com/espressif/esp-idf
   Built by Khoi Hoang https://github.com/khoih-prog/WebServer_ESP32_ENC
   Licensed under GPLv3 license
 
-  Version: 1.5.1
+  Version: 1.5.3
 
   Version Modified By   Date      Comments
   ------- -----------  ---------- -----------
   1.5.1   K Hoang      28/11/2022 Initial coding for ESP32_ENC (ESP32 + ENC28J60). Sync with WebServer_WT32_ETH01 v1.5.1
+  1.5.3   K Hoang      11/01/2023 Using built-in ESP32 MAC. Increase default SPI clock to 20MHz from 8MHz
  *****************************************************************************************************************************/
 
 #pragma once

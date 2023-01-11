@@ -5,15 +5,16 @@
 
   WebServer_ESP32_ENC is a library for the ESP32 with Ethernet ENC28J60 to run WebServer
 
-  Based on and modified from ESP8266 https://github.com/esp8266/Arduino/releases
+  Based on and modified from ESP32-IDF https://github.com/espressif/esp-idf
   Built by Khoi Hoang https://github.com/khoih-prog/WebServer_ESP32_ENC
   Licensed under GPLv3 license
 
-  Version: 1.5.1
+  Version: 1.5.3
 
   Version Modified By   Date      Comments
   ------- -----------  ---------- -----------
   1.5.1   K Hoang      28/11/2022 Initial coding for ESP32_ENC (ESP32 + ENC28J60). Sync with WebServer_WT32_ETH01 v1.5.1
+  1.5.3   K Hoang      11/01/2023 Using built-in ESP32 MAC. Increase default SPI clock to 20MHz from 8MHz
  *****************************************************************************************************************************/
 /*
   Based on ETH.h from arduino-esp32 and esp-idf
@@ -68,7 +69,26 @@ bool ESP32_ENC::begin(int MISO, int MOSI, int SCLK, int CS, int INT, int SPICLOC
 {
   tcpipInit();
 
-  esp_base_mac_addr_set( ENC28J60_Mac );
+  //esp_base_mac_addr_set( ENC28J60_Mac );
+  
+  if ( esp_read_mac(mac_eth, ESP_MAC_ETH) == ESP_OK )
+  {
+    char macStr[18] = { 0 };
+
+    sprintf(macStr, "%02X:%02X:%02X:%02X:%02X:%02X", mac_eth[0], mac_eth[1], mac_eth[2],
+            mac_eth[3], mac_eth[4], mac_eth[5]);
+
+    ET_LOGINFO1("Using built-in mac_eth =", macStr);
+
+    esp_base_mac_addr_set( mac_eth );
+  }
+  else
+  {
+    ET_LOGINFO("Using user mac_eth");
+    memcpy(mac_eth, ENC28J60_Mac, sizeof(mac_eth));
+
+    esp_base_mac_addr_set( ENC28J60_Mac );
+  }
 
   tcpip_adapter_set_default_eth_handlers();
 
@@ -107,7 +127,7 @@ bool ESP32_ENC::begin(int MISO, int MOSI, int SCLK, int CS, int INT, int SPICLOC
     return false;
   }
 
-  eth_mac->set_addr(eth_mac, ENC28J60_Mac);
+  eth_mac->set_addr(eth_mac, mac_eth);
 
   if (emac_enc28j60_get_chip_info(eth_mac) < ENC28J60_REV_B5 && SPICLOCK_MHZ < 8)
   {

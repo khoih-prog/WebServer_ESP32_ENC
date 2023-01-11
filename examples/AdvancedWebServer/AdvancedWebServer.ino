@@ -50,8 +50,8 @@
 //////////////////////////////////////////////////////////
 
 // Optional values to override default settings
-//#define SPI_HOST            1
-//#define SPI_CLOCK_MHZ       8
+//#define ETH_SPI_HOST        SPI3_HOST
+//#define SPI_CLOCK_MHZ       20
 
 // Must connect INT to GPIOxx or not working
 //#define INT_GPIO            4
@@ -208,16 +208,14 @@ void setup()
 
   // start the ethernet connection and the server:
   // Use DHCP dynamic IP and random mac
-  uint16_t index = millis() % NUMBER_OF_MAC;
-
   //bool begin(int MISO_GPIO, int MOSI_GPIO, int SCLK_GPIO, int CS_GPIO, int INT_GPIO, int SPI_CLOCK_MHZ,
-  //           int SPI_HOST, uint8_t *ENC28J60_Mac = ENC28J60_Default_Mac);
-  //ETH.begin( MISO_GPIO, MOSI_GPIO, SCK_GPIO, CS_GPIO, INT_GPIO, SPI_CLOCK_MHZ, SPI_HOST );
-  ETH.begin( MISO_GPIO, MOSI_GPIO, SCK_GPIO, CS_GPIO, INT_GPIO, SPI_CLOCK_MHZ, SPI_HOST, mac[index] );
+  //           int SPI_HOST, uint8_t *W6100_Mac = W6100_Default_Mac);
+  ETH.begin( MISO_GPIO, MOSI_GPIO, SCK_GPIO, CS_GPIO, INT_GPIO, SPI_CLOCK_MHZ, ETH_SPI_HOST );
+  //ETH.begin( MISO_GPIO, MOSI_GPIO, SCK_GPIO, CS_GPIO, INT_GPIO, SPI_CLOCK_MHZ, ETH_SPI_HOST, mac[millis() % NUMBER_OF_MAC] );
 
   // Static IP, leave without this line to get IP via DHCP
   //bool config(IPAddress local_ip, IPAddress gateway, IPAddress subnet, IPAddress dns1 = 0, IPAddress dns2 = 0);
-  ETH.config(myIP, myGW, mySN, myDNS);
+  //ETH.config(myIP, myGW, mySN, myDNS);
 
   ESP32_ENC_waitForConnect();
 
