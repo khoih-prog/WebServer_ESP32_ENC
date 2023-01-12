@@ -9,6 +9,7 @@
 <a href="https://www.buymeacoffee.com/khoihprog6" title="Donate to my libraries using BuyMeACoffee"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Donate to my libraries using BuyMeACoffee" style="height: 50px !important;width: 181px !important;" ></a>
 <a href="https://www.buymeacoffee.com/khoihprog6" title="Donate to my libraries using BuyMeACoffee"><img src="https://img.shields.io/badge/buy%20me%20a%20coffee-donate-orange.svg?logo=buy-me-a-coffee&logoColor=FFDD00" style="height: 20px !important;width: 200px !important;" ></a>
 
+
 ---
 ---
 
@@ -181,7 +182,6 @@ This [**WebServer_ESP32_ENC** library](https://github.com/khoih-prog/WebServer_E
 </p>
  
  
- 
 ---
 ---
 
@@ -267,7 +267,7 @@ Please have a look at [**ESP_WiFiManager Issue 39: Not able to read analog port 
 - `ADC1` controls ADC function for pins **GPIO32-GPIO39**
 - `ADC2` controls ADC function for pins **GPIO0, 2, 4, 12-15, 25-27**
 
-#### 3. ESP32 WiFi uses ADC2 for WiFi functions
+#### 3.. ESP32 WiFi uses ADC2 for WiFi functions
 
 Look in file [**adc_common.c**](https://github.com/espressif/esp-idf/blob/master/components/driver/adc_common.c#L61)
 
@@ -448,8 +448,6 @@ void serveStatic();
 size_t streamFile();
 ```
 
-
-
 ---
 ---
 
@@ -464,23 +462,27 @@ You can change the `INT` pin to another one. Default is `GPIO4`
 
 ---
 
-
 #### ENC28J60
 
 `FULL_DUPLEX, 10Mbps`
 
 <p align="center">
-    <img src="https://github.com/khoih-prog/WebServer_ESP32_ENC/raw/main/pics/ENC28J60.png">
+    <img src="https://github.com/khoih-prog/WebServer_ESP32_W5500/raw/main/pics/ENC28J60.png">
 </p>
+ 
 
 ---
 
+
+#### ESP32_DEV
+
+
 |ENC28J60|<--->|ESP32|
 |:-:|:-:|:-:|
-|MOSI|<--->|GPIO11|
-|MISO|<--->|GPIO13|
-|SCK|<--->|GPIO12|
-|CS/SS|<--->|GPIO10|
+|MOSI|<--->|GPIO23|
+|MISO|<--->|GPIO19|
+|SCK|<--->|GPIO18|
+|SS/CS|<--->|GPIO5|
 |INT|<--->|GPIO4|
 |RST|<--->|RST|
 |GND|<--->|GND|
@@ -519,7 +521,7 @@ You can change the `INT` pin to another one. Default is `GPIO4`
 #### File [AdvancedWebServer.ino](examples/AdvancedWebServer/AdvancedWebServer.ino)
 
 
-https://github.com/khoih-prog/WebServer_ESP32_ENC/blob/041ef525edf63eccb70c78d8f65999664c383866/examples/AdvancedWebServer/AdvancedWebServer.ino#L41-L275
+https://github.com/khoih-prog/WebServer_ESP32_ENC/blob/7b3055e675c859f066eae34fc58b7857f86c192d/examples/AdvancedWebServer/AdvancedWebServer.ino#L41-L273
 
 ---
 ---
@@ -536,21 +538,21 @@ The following are debug terminal output and screen shot when running example [Ad
 
 ```cpp
 Start AdvancedWebServer on ESP32_DEV with ESP32_ENC28J60
-WebServer_ESP32_ENC v1.5.1 for core v2.0.0+
+WebServer_ESP32_ENC v1.5.3 for core v2.0.0+
 [EWS] Default SPI pinout:
 [EWS] MOSI: 23
 [EWS] MISO: 19
 [EWS] SCK: 18
 [EWS] CS: 5
 [EWS] INT: 4
-[EWS] SPI Clock (MHz): 8
+[EWS] SPI Clock (MHz): 20
 [EWS] =========================
 
 ETH Started
 ETH Connected
-ETH MAC: DE:AD:BE:EF:BE:14, IPv4: 192.168.2.232
+ETH MAC: 98:F4:AB:09:0A:DF, IPv4: 192.168.2.80
 FULL_DUPLEX, 10Mbps
-HTTP EthernetWebServer is @ IP : 192.168.2.232
+HTTP EthernetWebServer is @ IP : 192.168.2.80
 ..
 ```
 
@@ -563,19 +565,19 @@ The terminal output of **ESP32_DEV with ENC28J60** running [MQTT_ThingStream exa
 
 ```cpp
 Start MQTT_ThingStream on ESP32_DEV with ESP32_ENC28J60
-WebServer_ESP32_ENC v1.5.1 for core v2.0.0+
+WebServer_ESP32_ENC v1.5.3 for core v2.0.0+
 [EWS] Default SPI pinout:
 [EWS] MOSI: 23
 [EWS] MISO: 19
 [EWS] SCK: 18
 [EWS] CS: 5
 [EWS] INT: 4
-[EWS] SPI Clock (MHz): 8
+[EWS] SPI Clock (MHz): 20
 [EWS] =========================
 
 ETH Started
 ETH Connected
-ETH MAC: DE:AD:BE:EF:BE:08, IPv4: 192.168.2.232
+ETH MAC: 98:F4:AB:09:0A:DF, IPv4: 192.168.2.80
 FULL_DUPLEX, 10Mbps
 ***************************************
 ESP32_Pub
@@ -599,19 +601,19 @@ The terminal output of **ESP32_DEV with ENC28J60** running [MQTTClient_Auth exam
 
 ```cpp
 Start MQTTClient_Auth on ESP32_DEV with ESP32_ENC28J60
-WebServer_ESP32_ENC v1.5.1 for core v2.0.0+
+WebServer_ESP32_ENC v1.5.3 for core v2.0.0+
 [EWS] Default SPI pinout:
 [EWS] MOSI: 23
 [EWS] MISO: 19
 [EWS] SCK: 18
 [EWS] CS: 5
 [EWS] INT: 4
-[EWS] SPI Clock (MHz): 8
+[EWS] SPI Clock (MHz): 20
 [EWS] =========================
 
 ETH Started
 ETH Connected
-ETH MAC: DE:AD:BE:EF:BE:14, IPv4: 192.168.2.232
+ETH MAC: 98:F4:AB:09:0A:DF, IPv4: 192.168.2.80
 FULL_DUPLEX, 10Mbps
 Attempting MQTT connection to broker.emqx.io...connected
 Message Send : MQTT_Pub => Hello from MQTTClient_Auth on ESP32_DEV with ESP32_ENC28J60
@@ -630,19 +632,19 @@ The terminal output of **ESP32_DEV with ENC28J60** running [MQTTClient_Basic exa
 
 ```cpp
 Start MQTTClient_Basic on ESP32_DEV with ESP32_ENC28J60
-WebServer_ESP32_ENC v1.5.1 for core v2.0.0+
+WebServer_ESP32_ENC v1.5.3 for core v2.0.0+
 [EWS] Default SPI pinout:
 [EWS] MOSI: 23
 [EWS] MISO: 19
 [EWS] SCK: 18
 [EWS] CS: 5
 [EWS] INT: 4
-[EWS] SPI Clock (MHz): 8
+[EWS] SPI Clock (MHz): 20
 [EWS] =========================
 
 ETH Started
 ETH Connected
-ETH MAC: DE:AD:BE:EF:BE:08, IPv4: 192.168.2.232
+ETH MAC: 98:F4:AB:09:0A:DF, IPv4: 192.168.2.80
 FULL_DUPLEX, 10Mbps
 Attempting MQTT connection to broker.emqx.io...connected
 Message Send : MQTT_Pub => Hello from MQTTClient_Basic on ESP32_DEV with ESP32_ENC28J60
@@ -662,25 +664,25 @@ The terminal output of **ESP32_DEV with ENC28J60** running [WebClient example](e
 
 ```cpp
 Start WebClient on ESP32_DEV with ESP32_ENC28J60
-WebServer_ESP32_ENC v1.5.1 for core v2.0.0+
+WebServer_ESP32_ENC v1.5.3 for core v2.0.0+
 [EWS] Default SPI pinout:
 [EWS] MOSI: 23
 [EWS] MISO: 19
 [EWS] SCK: 18
 [EWS] CS: 5
 [EWS] INT: 4
-[EWS] SPI Clock (MHz): 8
+[EWS] SPI Clock (MHz): 20
 [EWS] =========================
 
 ETH Started
 ETH Connected
-ETH MAC: DE:AD:BE:EF:BE:12, IPv4: 192.168.2.232
+ETH MAC: 98:F4:AB:09:0A:DF, IPv4: 192.168.2.80
 FULL_DUPLEX, 10Mbps
 
 Starting connection to server...
 Connected to server
 HTTP/1.1 200 OK
-Date: Mon, 28 Nov 2022 07:45:46 GMT
+Date: Wed, 11 Jan 2023 07:19:54 GMT
 Content-Type: text/plain
 Content-Length: 2263
 Connection: close
@@ -747,38 +749,33 @@ The terminal output of **ESP32_DEV with ENC28J60** running [UDPSendReceive examp
 
 ```cpp
 Start UDPSendReceive on ESP32_DEV with ESP32_ENC28J60
-WebServer_ESP32_ENC v1.5.1 for core v2.0.0+
+WebServer_ESP32_ENC v1.5.3 for core v2.0.0+
 [EWS] Default SPI pinout:
 [EWS] MOSI: 23
 [EWS] MISO: 19
 [EWS] SCK: 18
 [EWS] CS: 5
 [EWS] INT: 4
-[EWS] SPI Clock (MHz): 8
+[EWS] SPI Clock (MHz): 20
 [EWS] =========================
 
 ETH Started
 ETH Connected
-ETH MAC: DE:AD:BE:EF:BE:08, IPv4: 192.168.2.232
+ETH MAC: 98:F4:AB:09:0A:DF, IPv4: 192.168.2.80
 FULL_DUPLEX, 10Mbps
 
 Starting connection to server...
 Listening on port 2390
 UDP Packet received, size 48
-From 132.163.97.3, port 123
-Seconds since Jan 1 1900 = 3878610164
-Unix time = 1669621364
-The UTC time is 7:42:44
+From 132.163.97.6, port 123
+Seconds since Jan 1 1900 = 3882459421
+Unix time = 1673470621
+The UTC time is 20:57:01
 UDP Packet received, size 48
-From 132.163.97.3, port 123
-Seconds since Jan 1 1900 = 3878610176
-Unix time = 1669621376
-The UTC time is 7:42:56
-UDP Packet received, size 48
-From 132.163.97.3, port 123
-Seconds since Jan 1 1900 = 3878610188
-Unix time = 1669621388
-The UTC time is 7:43:08
+From 132.163.97.6, port 123
+Seconds since Jan 1 1900 = 3882459433
+Unix time = 1673470633
+The UTC time is 20:57:13
 ```
 
 ---
@@ -818,7 +815,10 @@ Submit issues to: [WebServer_ESP32_ENC issues](https://github.com/khoih-prog/Web
 
 ### DONE
 
- 1. Add support to ESP32-based **ESP32_DEV** using `LwIP ENC28J60 Ethernet`
+ 1. Add support to ESP32-based **ESP32_DEV with ENC28J60** using LwIP ENC28J60 Ethernet
+ 2. Using `built-in ESP32 MAC Address`
+ 3. Increase default `SPI_CLOCK_MHZ` clock to 20MHz from 8MHz
+
 
 ---
 ---
